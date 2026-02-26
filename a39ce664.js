@@ -1,0 +1,1 @@
+import{D as e,I as r,a}from"./e65b92ef.js";class t extends e(r(a)){static get tag(){return"slide-arrow"}static get haxProperties(){return new URL("./lib/".concat(this.tag,".haxProperties.json"),import.meta.url).href}}globalThis.customElements.define(t.tag,t);

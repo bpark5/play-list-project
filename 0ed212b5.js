@@ -1,0 +1,1 @@
+import{D as e,I as s,a}from"./e65b92ef.js";class t extends e(s(a)){static get tag(){return"play-list-slide"}static get haxProperties(){return new URL("./lib/".concat(this.tag,".haxProperties.json"),import.meta.url).href}}globalThis.customElements.define(t.tag,t);

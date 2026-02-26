@@ -16,6 +16,11 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     static get tag() {
         return "play-list-slide";
     }
+
+    static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
+  }
 }
 
 globalThis.customElements.define(PlayListSlide.tag, PlayListSlide);

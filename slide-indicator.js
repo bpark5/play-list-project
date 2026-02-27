@@ -17,10 +17,30 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         return "slide-indicator";
     }
 
-    static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
+    constructor() {
+        super();
+    }
+
+    static get properties() {
+    return {
+      ...super.properties,
+      topHeading: { type: String },
+    };
+    }
+
+    static get styles() {
+    return [super.styles,
+    css`
+        :host {
+            display: block;
+        }
+    `];
+    }
+
+    render() {
+        return html` `;
+    }
+
 }
 
 globalThis.customElements.define(SlideIndicator.tag, SlideIndicator);

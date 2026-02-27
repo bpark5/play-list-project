@@ -5,6 +5,9 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "./play-list-slide.js";
+import "./slide-arrow.js";
+import "./slide-indicator.js";
 
 /**
  * `play-list-project`
@@ -26,12 +29,6 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/play-list-project.ar.json", import.meta.url).href +
-        "/../",
-    });
   }
 
   // Lit reactive properties
@@ -70,14 +67,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   <slot></slot>
 </div>`;
   }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
+  
 }
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);

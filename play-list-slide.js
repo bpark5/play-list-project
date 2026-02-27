@@ -17,10 +17,40 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         return "play-list-slide";
     }
 
-    static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
+    constructor() {
+        super();
+        this.topHeading = "";
+        this.secondHeading = "";
+    }
+
+    static get properties() {
+    return {
+      ...super.properties,
+      topHeading: { type: String },
+      secondHeading: { type: String },
+
+    };
+    }
+
+    static get styles() {
+    return [super.styles,
+    css`
+        :host {
+            display: block;
+        }
+    `];
+    }
+
+    render() {
+        return html `
+        <div class="top-heading">
+            <h4>${this.topHeading}</h4>
+        </div>
+        <div class="second-heading">
+            <h2>${this.secondHeading}</h2>
+        </div> `;
+    }
+
 }
 
 globalThis.customElements.define(PlayListSlide.tag, PlayListSlide);

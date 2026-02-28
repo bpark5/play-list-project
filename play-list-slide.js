@@ -27,8 +27,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       topHeading: { type: String },
-      secondHeading: { type: String },
-
+      bottomHeading: { type: String },
     };
     }
 
@@ -38,16 +37,24 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         }
+
+        .top-heading h4 {
+            color: var(--ddd-theme-primary);
+        }
+
+        .bottom-heading h2 {
+            color: var(--ddd-theme-primary);
+        }
     `];
     }
 
     render() {
         return html `
         <div class="top-heading">
-            <h4>${this.topHeading}</h4>
+            <h3>${this.topHeading}</h3>
         </div>
-        <div class="second-heading">
-            <h2>${this.secondHeading}</h2>
+        <div class="bottom-heading">
+            <h1>${this.bottomHeading}</h1>
         </div> 
         <slot class="play-list-slide-information"></slot>`;
     }

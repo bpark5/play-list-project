@@ -23,12 +23,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.index = 0;
+    this.totalSlides = 0;
     this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
   }
 
   // Lit reactive properties
@@ -36,7 +33,8 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      index: {type: Number}
+      index: {type: Number},
+      slides: {type: Array}
     };
   }
 
@@ -69,7 +67,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="wrapper">
-      <h3><span>${this.t.title}:</span> ${this.title}</h3>
+      <slide-arrow direction="left"></slide-arrow>
+      <play-list-slide></play-list-slide>
+      <slide-arrow direction="right"></slide-arrow>
       <slot></slot>
     </div>`;
   }

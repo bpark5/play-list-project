@@ -52,8 +52,8 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html`
-            <div class="slide-indicator">
-                ${this.currentIndex + 1} of ${this.totalSlides}
+            <div class="dots">
+                ${this.currentIndex} ${this.totalSlides}
             </div>`;
     }
 

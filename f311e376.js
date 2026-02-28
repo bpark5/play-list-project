@@ -1,4 +1,0 @@
-import{D as d,i as o,b as p,I as c,a as l}from"./e65b92ef.js";var s=Object.freeze,g=Object.defineProperty,t=(e,a)=>s(g(e,"raw",{value:s(a||e.slice())}));/**
-* Copyright 2026 Brandon Park
-* @license Apache-2.0, see LICENSE for full text.
-*/var i,n;class r extends d(c(l)){static get tag(){return"play-list-slide"}constructor(){super(),this.topHeading="",this.secondHeading=""}static get properties(){return{...super.properties,topHeading:{type:String},secondHeading:{type:String}}}static get styles(){return[super.styles,o(i||(i=t(["\n        :host {\n            display: block;\n        }\n    "])))]}render(){return p(n||(n=t(['\n        <div class="top-heading">\n            <h4>','</h4>\n        </div>\n        <div class="second-heading">\n            <h2>',"</h2>\n        </div> "])),this.topHeading,this.secondHeading)}}globalThis.customElements.define(r.tag,r);

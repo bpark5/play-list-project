@@ -36,6 +36,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      index: {type: Number}
     };
   }
 
@@ -59,15 +60,20 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
+  numberOfSlies() {
+    this.slides = this.querySelectorAll("play-list-slide");
+  }
+
+  
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-  <slot></slot>
-</div>`;
+    <div class="wrapper">
+      <h3><span>${this.t.title}:</span> ${this.title}</h3>
+      <slot></slot>
+    </div>`;
   }
-  
+
 }
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);

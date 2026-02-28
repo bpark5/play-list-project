@@ -19,12 +19,15 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
 
     constructor() {
         super();
+        this.leftArrow = "<";
+        this.rightArrow = ">";
     }
 
     static get properties() {
     return {
       ...super.properties,
-      topHeading: { type: String },
+      leftArrow: { type: String },
+      rightArrow: { type: String },
     };
     }
 
@@ -34,11 +37,17 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         :host {
             display: block;
         }
+
+        .slide-arrow-left {
+            color: var(--ddd-theme-primary);
+        }
     `];
     }
 
     render() {
-        return html ` `;
+        return html ` 
+        <button class="slide-arrow-left">${this.leftArrow}</button>
+        <button class="slide-arrow-right">${this.rightArrow}</button>`;
     }
 
 }

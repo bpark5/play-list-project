@@ -35,8 +35,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     static get styles() {
     return [super.styles,
     css`
-        :host {
-            display: block;
+      :host {
+        display: block;
         }
     `];
     }
@@ -48,7 +48,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         </div>
         <div class="second-heading">
             <h2>${this.secondHeading}</h2>
-        </div> `;
+        </div> 
+        <slot class="play-list-slide-information"></slot>`;
     }
 
 }

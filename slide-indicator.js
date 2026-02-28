@@ -24,7 +24,8 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     static get properties() {
     return {
       ...super.properties,
-      topHeading: { type: String },
+      currentIndex: { type: Number },
+      totalSlides: { type: Number }
     };
     }
 
@@ -36,9 +37,24 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         }
     `];
     }
+    handleClick(e) {
+        const index = e.detail.index; // need a way of tracking which item was clicked I am just saying it's index
+        const indexChange = new CustomEvent("play-list-index-changed", {
+        composed: true,
+        bubbles: true,
+        detail: {
+            index: index
+        },
+        });
+        this.dispatchEvent(indexChange);
+    }
+    
 
     render() {
-        return html` `;
+        return html`
+            <div class="slide-indicator">
+                ${this.currentIndex + 1} of ${this.totalSlides}
+            </div>`;
     }
 
 }

@@ -47,6 +47,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-primary);
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
+        background-color: var(--ddd-theme-default-slateMaxLight);
+        margin: var(--ddd-spacing-2);
+        border-radius: var(--ddd-radius-sm);
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
@@ -59,14 +62,13 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   firstUpdated() {
+    this.slides = Array.from(this.querySelectorAll("play-list-slide"));
+    this.totalSlides = this.slides.length;
     this._updateSlides()
   }
 
   _updateSlides() {
-      this.slides = Array.from(this.querySelectorAll("play-list-slide"));
-      this.totalSlides = this.slides.length;
       this.slides.forEach((slide, i) => slide.active = (i === this.currentIndex));  
-      
         const indexChange = new CustomEvent("play-list-index-changed", {
           composed: true,
           bubbles: true,
@@ -100,11 +102,11 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="wrapper">
+      <slot></slot>
       <slide-arrow 
         @previous-slide="${this.previousSlide}"   
         @next-slide="${this.nextSlide}">   
       </slide-arrow>
-      <slot></slot>
       <slide-indicator 
         @play-list-index-changed="${this.handleEvent}"
         .currentIndex="${this.currentIndex}" 

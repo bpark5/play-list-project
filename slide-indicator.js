@@ -35,6 +35,20 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         :host {
             display: block;
         }
+
+        .dot.active {
+            color: var(--ddd-theme-default-skyBlue);
+        }
+
+        .dot {
+            color: var(--ddd-theme-default-limestoneGray);
+            padding: var(--ddd-spacing-1);
+            cursor: pointer;
+        }
+
+        .dot:hover {
+            opacity: 0.7;
+        }
     `];
     }
 
@@ -42,8 +56,11 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         let dots = [];
         for (let i = 0; i < this.totalSlides; i++) {
             dots.push(html`
-                <span @click="${this._handleDotClick}" data-index="${i}" class = "dot ${i === this.currentIndex ? "active" : ""}">
-                </span>${i === this.currentIndex ? "●" : "○"}</span>`);
+                <span @click="${this._handleDotClick}" 
+                data-index="${i}" 
+                class = "dot ${i === this.currentIndex ? "active" : ""}">
+                ●
+                </span>`);
         }
         return html`
             <div class="dots">
@@ -52,7 +69,6 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     _handleDotClick(e) {
-        
         const indexChange = new CustomEvent("play-list-index-changed", {
         composed: true,
         bubbles: true,

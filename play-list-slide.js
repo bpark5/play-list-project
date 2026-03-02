@@ -40,12 +40,18 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         display: block;
         }
 
-        .top-heading h4 {
-            color: var(--ddd-theme-primary);
+        .top-heading {
+            font: var(--ddd-font-primary);
+            color: var(--ddd-theme-default-link);
         }
 
-        .bottom-heading h2 {
-            color: var(--ddd-theme-primary);
+        .bottom-heading {
+            font: var(--ddd-font-primary);
+            color: var(--ddd-theme-default-beaverBlue);
+        }
+
+        .play-list-slide-information {
+            color: var(--ddd-theme-default-beaverBlue);
         }
 
         :host([active])
@@ -62,15 +68,13 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html `
-        <div class="slide-wrapper">
-            <div class="top-heading">
-                <h3>${this.topHeading}</h3>
-            </div>
-            <div class="bottom-heading">
-                <h1>${this.bottomHeading}</h1>
-            </div> 
-            <slot class="play-list-slide-information"></slot>
-        </div>`;
+        <div class="top-heading">
+            <h4>${this.topHeading}</h4>
+        </div>
+        <div class="bottom-heading">
+            <h1>${this.bottomHeading}</h1>
+        </div> 
+        <slot class="play-list-slide-information"></slot>`;
     }
 
 }

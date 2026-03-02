@@ -45,9 +45,10 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html ` 
-        <button class="slide-arrow">
-            ${this.direction === "left" ? "<" : ">"}
-        </button>`;
+        <div class=slide-arrow-wrapper>
+        <button class="left-arrow" @click=${() => this.dispatchEvent(new CustomEvent("previous-slide", {composed: true, bubbles: true}))}>Previous</button>
+        <button class="right-arrow" @click=${() => this.dispatchEvent(new CustomEvent("next-slide", {composed: true, bubbles: true}))}>Next</button>
+        </div>`;
     }
 
 }

@@ -20,7 +20,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     constructor() {
         super();
         this.topHeading = "";
-        this.secondHeading = "";
+        this.bottomHeading = "";
+        this.active = false;
     }
 
     static get properties() {
@@ -28,6 +29,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       topHeading: { type: String },
       bottomHeading: { type: String },
+      active: { type: Boolean, reflect: true }
     };
     }
 
@@ -45,18 +47,30 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         .bottom-heading h2 {
             color: var(--ddd-theme-primary);
         }
+
+        :host([active])
+        {
+            display: block;
+        }
+
+        :host(:not([active]))
+        {
+            display: none;
+        }
     `];
     }
 
     render() {
         return html `
-        <div class="top-heading">
-            <h3>${this.topHeading}</h3>
-        </div>
-        <div class="bottom-heading">
-            <h1>${this.bottomHeading}</h1>
-        </div> 
-        <slot class="play-list-slide-information"></slot>`;
+        <div class="slide-wrapper">
+            <div class="top-heading">
+                <h3>${this.topHeading}</h3>
+            </div>
+            <div class="bottom-heading">
+                <h1>${this.bottomHeading}</h1>
+            </div> 
+            <slot class="play-list-slide-information"></slot>
+        </div>`;
     }
 
 }

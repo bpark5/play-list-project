@@ -37,24 +37,30 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         }
     `];
     }
-    handleClick(e) {
-        const index = e.detail.index; // need a way of tracking which item was clicked I am just saying it's index
+
+    render() {
+        let dots = [];
+        for (let i = 0; i < this.totalSlides; i++) {
+            dots.push(html`
+                <span @click="${this._handleDotClick}" data-index="${i}" class = "dot ${i === this.currentIndex ? "active" : ""}">
+                </span>${i === this.currentIndex ? "●" : "○"}</span>`);
+        }
+        return html`
+            <div class="dots">
+                ${dots}
+            </div>`;
+    }
+
+    _handleDotClick(e) {
+        
         const indexChange = new CustomEvent("play-list-index-changed", {
         composed: true,
         bubbles: true,
         detail: {
-            index: index
-        },
+            index: parseInt(e.currentTarget.dataset.index)
+            },
         });
         this.dispatchEvent(indexChange);
-    }
-    
-
-    render() {
-        return html`
-            <div class="dots">
-                ${this.currentIndex} ${this.totalSlides}
-            </div>`;
     }
 
 }

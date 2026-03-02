@@ -23,9 +23,10 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.index = 0;
+    this.currentIndex = 0;
     this.totalSlides = 0;
     this.title = "";
+    this.slides = Array.from(this.querySelectorAll("play-list-slide"));
   }
 
   // Lit reactive properties
@@ -33,7 +34,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      index: {type: Number},
+      currentIndex: {type: Number},
       slides: {type: Array}
     };
   }
@@ -58,19 +59,56 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
-  numberOfSlies() {
-    this.slides = this.querySelectorAll("play-list-slide");
+  firstUpdated() {
+    this._updateSlides()
   }
 
-  
+  _updateSlides() {
+      slide.active = (i === this.currentIndex);
+      if (i === this.currentIndex) {
+        const indexChange = new CustomEvent("play-list-index-changed", {
+          composed: true,
+          bubbles: true,
+          detail: {
+              index: this.currentIndex
+          },
+        });
+        this.dispatchEvent(indexChange);
+      }
+    };
+
+  nextSlide() {
+    if (this.currentIndex < this.totalSlides - 1) {
+      this.currentIndex ++;
+    }
+    this._updateSlides();
+  }
+
+  previousSlide() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+    this._updateSlides();
+  }
+
+  handleEvent(e) {
+    this.currentIndex = e.detail.index;
+    this._updateSlides();
+  }
+
   // Lit render the HTML
   render() {
     return html`
     <div class="wrapper">
-      <slide-arrow direction="left"></slide-arrow>
-      <play-list-slide></play-list-slide>
-      <slide-arrow direction="right"></slide-arrow>
-      <slot></slot>
+      <slide-arrow 
+        @previous-slide="${this.previousSlide}"   
+        @next-slide="${this.nextSlide}">   
+      </slide-arrow>
+      <slide-indicator 
+      @play-list-index-changed="${this.handleEvent}"
+      .currentIndex="${this.currentIndex}" 
+      .totalSlides="${this.totalSlides ? this.slides.length : 0 }">
+      </slide-indicator>
     </div>`;
   }
 

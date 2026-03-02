@@ -26,7 +26,6 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     this.currentIndex = 0;
     this.totalSlides = 0;
     this.title = "";
-    this.slides = Array.from(this.querySelectorAll("play-list-slide"));
   }
 
   // Lit reactive properties
@@ -64,8 +63,10 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _updateSlides() {
-      slide.active = (i === this.currentIndex);
-      if (i === this.currentIndex) {
+      this.slides = Array.from(this.querySelectorAll("play-list-slide"));
+      this.totalSlides = this.slides.length;
+      this.slides.forEach((slide, i) => slide.active = (i === this.currentIndex));  
+      
         const indexChange = new CustomEvent("play-list-index-changed", {
           composed: true,
           bubbles: true,
@@ -74,8 +75,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
           },
         });
         this.dispatchEvent(indexChange);
-      }
-    };
+      };
 
   nextSlide() {
     if (this.currentIndex < this.totalSlides - 1) {
@@ -104,14 +104,17 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         @previous-slide="${this.previousSlide}"   
         @next-slide="${this.nextSlide}">   
       </slide-arrow>
+      <slot></slot>
       <slide-indicator 
-      @play-list-index-changed="${this.handleEvent}"
-      .currentIndex="${this.currentIndex}" 
-      .totalSlides="${this.totalSlides ? this.slides.length : 0 }">
+        @play-list-index-changed="${this.handleEvent}"
+        .currentIndex="${this.currentIndex}" 
+        .totalSlides="${this.totalSlides ? this.slides.length : 0 }">
       </slide-indicator>
     </div>`;
   }
-
+  
 }
+
+
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);

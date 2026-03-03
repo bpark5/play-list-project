@@ -38,7 +38,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 400px;
+        height: 300px;
         }
 
         .top-heading h4{
@@ -69,7 +69,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .play-list-slide-information {
-            max-height: 240px;
+            max-height: 140px;
             overflow-y: auto;
             margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-10) 0;
         }

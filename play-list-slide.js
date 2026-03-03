@@ -38,16 +38,20 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
+        height: 400px;
         }
 
-        .top-heading {
-            font: var(--ddd-font-primary);
+        .top-heading h4{
+            font: var(--ddd-font-size-sm) var(--ddd-font-primary);
             color: var(--ddd-theme-default-link);
+            
         }
 
-        .bottom-heading {
-            font: var(--ddd-font-primary);
+        .bottom-heading h1{
+            font: var(--ddd-font-size-xxl) var(--ddd-font-primary);
             color: var(--ddd-theme-default-beaverBlue);
+            margin: 0 0 var(--ddd-spacing-4) 0;
+            
         }
 
         .play-list-slide-information {
@@ -65,8 +69,9 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .play-list-slide-information {
-            max-height: 200px;
+            max-height: 240px;
             overflow-y: auto;
+            margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-10) 0;
         }
     `];
     }
@@ -74,12 +79,14 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     render() {
         return html `
         <div class="top-heading">
-            <h6>${this.topHeading}</h6>
+            <h4><strong>${this.topHeading}</strong></h4>
         </div>
         <div class="bottom-heading">
-            <h1>${this.bottomHeading}</h1>
+            <h1><strong>${this.bottomHeading}</strong></h1>
         </div> 
-        <slot class="play-list-slide-information"></slot>`;
+        <div class="play-list-slide-information">
+            <slot></slot>
+        </div>`;
     }
 
 }

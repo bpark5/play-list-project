@@ -40,6 +40,7 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
         .dot.active {
             color: var(--ddd-theme-default-skyBlue);
+            cursor: not-allowed;
         }
 
         .dot {

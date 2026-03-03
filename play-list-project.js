@@ -25,6 +25,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.currentIndex = 0;
     this.totalSlides = 0;
+    this.slides = [];
     this.title = "";
   }
 
@@ -34,6 +35,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       currentIndex: {type: Number},
+      totalSlides: {type: Number},
       slides: {type: Array}
     };
   }
@@ -54,7 +56,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4) var(--ddd-spacing-11);
       }
       h3 span {
         font-size: var(--play-list-project-label-font-size, var(--ddd-font-size-s));
@@ -103,11 +105,13 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="wrapper">
-      <slot></slot>
       <slide-arrow 
+        .currentIndex=${this.currentIndex}
+        .totalSlides=${this.totalSlides}
         @previous-slide="${this.previousSlide}"   
         @next-slide="${this.nextSlide}">   
       </slide-arrow>
+      <slot></slot>
       <slide-indicator 
         @play-list-index-changed="${this.handleEvent}"
         .currentIndex="${this.currentIndex}" 

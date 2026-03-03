@@ -24,6 +24,8 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
     static get properties() {
     return {
       ...super.properties,
+      currentIndex: {type: Number},
+      totalSlide: {type: Number}
     };
     }
 
@@ -50,6 +52,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-default-beaverBlue);
         border: var(--ddd-border-md) solid var(--ddd-theme-default-beaverBlue);
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        margin: 0 var(--ddd-spacing-1);
         border-radius: var(--ddd-radius-rounded);
         font-size: var(--ddd-font-size-xs);
         }
@@ -57,14 +60,19 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         .left-arrow:hover, .right-arrow:hover {
             opacity: 0.7;
         }
+
+        .left-arrow:disabled, .right-arrow:disabled {
+            opacity: 1;
+            cursor: not-allowed;
+        }
     `];
     }
 
     render() {
         return html ` 
         <div class=slide-arrow-wrapper>
-            <button class="left-arrow" @click=${() => this.dispatchEvent(new CustomEvent("previous-slide", {composed: true, bubbles: true}))}><strong>‹</strong></button>
-            <button class="right-arrow" @click=${() => this.dispatchEvent(new CustomEvent("next-slide", {composed: true, bubbles: true}))}><strong>›</strong></button>
+            <button class="left-arrow" @click=${() => this.dispatchEvent(new CustomEvent("previous-slide", {composed: true, bubbles: true}))} ?disabled=${this.currentIndex === 0}><strong>‹</strong></button>
+            <button class="right-arrow" @click=${() => this.dispatchEvent(new CustomEvent("next-slide", {composed: true, bubbles: true}))} ?disabled=${this.currentIndex === this.totalSlides - 1}><strong>›</strong></button>
         </div>`;
     }
 

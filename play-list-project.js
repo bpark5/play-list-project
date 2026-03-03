@@ -50,6 +50,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-default-slateMaxLight);
         margin: var(--ddd-spacing-2);
         border-radius: var(--ddd-radius-sm);
+        position: relative;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);

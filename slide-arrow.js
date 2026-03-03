@@ -32,13 +32,17 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
     css`
         :host {
             display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            width: 100%;
         }
 
         .slide-arrow-wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--ddd-spacing-2);
       }
 
         .left-arrow, .right-arrow {
@@ -47,11 +51,11 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         border: var(--ddd-border-md) solid var(--ddd-theme-default-beaverBlue);
         padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
         border-radius: var(--ddd-radius-rounded);
-        font-size: var(--ddd-font-size-3xs);
+        font-size: var(--ddd-font-size-xs);
         }
 
-        button:hover {
-            opacity: 0.8;
+        .left-arrow:hover, .right-arrow:hover {
+            opacity: 0.7;
         }
     `];
     }
@@ -59,8 +63,8 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
     render() {
         return html ` 
         <div class=slide-arrow-wrapper>
-            <button class="left-arrow" @click=${() => this.dispatchEvent(new CustomEvent("previous-slide", {composed: true, bubbles: true}))}>Previous</button>
-            <button class="right-arrow" @click=${() => this.dispatchEvent(new CustomEvent("next-slide", {composed: true, bubbles: true}))}>Next</button>
+            <button class="left-arrow" @click=${() => this.dispatchEvent(new CustomEvent("previous-slide", {composed: true, bubbles: true}))}><strong>‹</strong></button>
+            <button class="right-arrow" @click=${() => this.dispatchEvent(new CustomEvent("next-slide", {composed: true, bubbles: true}))}><strong>›</strong></button>
         </div>`;
     }
 

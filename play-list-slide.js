@@ -63,13 +63,18 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         {
             display: none;
         }
+
+        .play-list-slide-information {
+            max-height: 200px;
+            overflow-y: auto;
+        }
     `];
     }
 
     render() {
         return html `
         <div class="top-heading">
-            <h4>${this.topHeading}</h4>
+            <h6>${this.topHeading}</h6>
         </div>
         <div class="bottom-heading">
             <h1>${this.bottomHeading}</h1>

@@ -34,6 +34,8 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     css`
         :host {
             display: block;
+            position: absolute;
+            bottom: var(--ddd-spacing-4);
         }
 
         .dot.active {
@@ -46,7 +48,7 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
             cursor: pointer;
         }
 
-        .dot:hover {
+        .dot:not(.active):hover {
             opacity: 0.7;
         }
     `];

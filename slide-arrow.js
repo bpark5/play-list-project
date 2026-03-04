@@ -49,12 +49,14 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
 
         .left-arrow, .right-arrow {
         background-color: white;
-        color: var(--ddd-theme-default-beaverBlue);
-        border: var(--ddd-border-md) solid var(--ddd-theme-default-beaverBlue);
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        color: var(--ddd-theme-default-link);
+        border: var(--ddd-border-md);
+        border-color: var(--ddd-theme-default-link);
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
         margin: 0 var(--ddd-spacing-1);
-        border-radius: var(--ddd-radius-rounded);
+        border-radius: var(--ddd-radius-circle);
         font-size: var(--ddd-font-size-xs);
+        cursor: pointer;
         }
 
         .left-arrow:hover, .right-arrow:hover {

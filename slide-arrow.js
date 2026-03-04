@@ -64,7 +64,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .left-arrow:disabled, .right-arrow:disabled {
-            opacity: 1;
+            opacity: 0.3;
             cursor: not-allowed;
         }
     `];

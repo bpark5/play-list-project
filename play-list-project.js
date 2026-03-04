@@ -58,9 +58,6 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4) var(--ddd-spacing-11);
       }
-      h3 span {
-        font-size: var(--play-list-project-label-font-size, var(--ddd-font-size-s));
-      }
     `];
   }
 

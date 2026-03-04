@@ -36,6 +36,8 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
             display: block;
             position: absolute;
             bottom: var(--ddd-spacing-4);
+            left: var(--ddd-spacing-12);
+
         }
 
         .dot.active {
@@ -46,6 +48,7 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         .dot {
             color: var(--ddd-theme-default-limestoneGray);
             padding: var(--ddd-spacing-1);
+            font-size: var(--ddd-font-size-s);
             cursor: pointer;
         }
 

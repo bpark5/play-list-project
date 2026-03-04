@@ -38,7 +38,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        height: 300px;
+        height: 350px;
         }
 
         .top-heading h4{
@@ -56,6 +56,11 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
 
         .play-list-slide-information {
             color: var(--ddd-theme-default-beaverBlue);
+            font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
+            max-height: 190px;
+            overflow-y: auto;
+            position: absolute;
+            margin: 0 var(--ddd-spacing-30) 0 0;  
         }
 
         :host([active])
@@ -68,19 +73,14 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
             display: none;
         }
 
-        .play-list-slide-information {
-            max-height: 140px;
-            overflow-y: auto;
-            margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-10) 0;
-        }
-
+    
         .play-list-slide-line {
             border: var(--ddd-border-xs);
             border-color: var(--ddd-theme-default-skyBlue);
             width: var(--ddd-spacing-14);
             position: absolute;
-            margin: var(--ddd-spacing-2) 0 0  0;
-
+            margin: var(--ddd-spacing-2) 0 0 0 ;
+            
         }
     `];
     }

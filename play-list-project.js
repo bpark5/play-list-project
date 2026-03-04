@@ -53,6 +53,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-8);
         border-radius: var(--ddd-radius-xs);
         position: relative;
+        box-shadow: var(--ddd-boxShadow-sm) ;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);

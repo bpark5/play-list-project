@@ -73,6 +73,15 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
             overflow-y: auto;
             margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-10) 0;
         }
+
+        .play-list-slide-line {
+            border: var(--ddd-border-xs);
+            border-color: var(--ddd-theme-default-skyBlue);
+            width: var(--ddd-spacing-14);
+            position: absolute;
+            margin: var(--ddd-spacing-2) 0 0  0;
+
+        }
     `];
     }
 
@@ -84,6 +93,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         <div class="bottom-heading">
             <h1><strong>${this.bottomHeading}</strong></h1>
         </div> 
+        <hr class="play-list-slide-line">
         <div class="play-list-slide-information">
             <slot></slot>
         </div>`;

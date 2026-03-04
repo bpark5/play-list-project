@@ -36,9 +36,8 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
             display: block;
             position: absolute;
             top: 50%;
-            left: 0;
-            right: 0;
-            width: 100%;
+            left: var(--ddd-spacing-0);
+            right: var(--ddd-spacing-0);
         }
 
         .slide-arrow-wrapper {
@@ -48,12 +47,12 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
       }
 
         .left-arrow, .right-arrow {
-        background-color: white;
+        background-color: var(--ddd-theme-default-white);
         color: var(--ddd-theme-default-link);
         border: var(--ddd-border-md);
         border-color: var(--ddd-theme-default-link);
         padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-        margin: 0 var(--ddd-spacing-1);
+        margin: 0 -20px;
         border-radius: var(--ddd-radius-circle);
         font-size: var(--ddd-font-size-xs);
         cursor: pointer;

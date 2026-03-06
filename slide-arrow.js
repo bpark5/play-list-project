@@ -52,7 +52,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         border: var(--ddd-border-md);
         border-color: var(--ddd-theme-default-link);
         padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-        margin: 0 -20px;
+        margin: 0 -15px;
         border-radius: var(--ddd-radius-circle);
         font-size: var(--ddd-font-size-xs);
         cursor: pointer;

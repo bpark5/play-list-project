@@ -50,14 +50,15 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
         background-color: var(--ddd-theme-default-slateMaxLight);
-        margin: var(--ddd-spacing-8);
+        margin: var(--ddd-spacing-10);
         border-radius: var(--ddd-radius-xs);
         position: relative;
-        box-shadow: var(--ddd-boxShadow-sm) ;
+        box-shadow: var(--ddd-boxShadow-sm);
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4) var(--ddd-spacing-11);
+        box-shadow: var(--ddd-boxShadow-sm);
       }
     `];
   }

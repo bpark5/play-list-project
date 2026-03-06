@@ -41,6 +41,19 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         height: 350px;
         }
 
+        .play-list-slide-information::-webkit-scrollbar {
+        width: var(--ddd-spacing-2);  
+        }
+
+        .play-list-slide-information::-webkit-scrollbar-track {
+        background: var(--ddd-theme-default-limestoneLight); 
+        }
+
+        .play-list-slide-information::-webkit-scrollbar-thumb {
+        background-color: var(--ddd-theme-default-limestoneGray); 
+        border-radius: var(--ddd-spacing-5); 
+        }
+
         .top-heading h4{
             font: var(--ddd-font-size-sm) var(--ddd-font-primary);
             color: var(--ddd-theme-default-link);
@@ -58,9 +71,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
             color: var(--ddd-theme-default-beaverBlue);
             font: var(--ddd-font-size-4xs) var(--ddd-font-navigation);
             max-height: 190px;
-            overflow-y: auto;
-            position: absolute;
-            margin: 0 var(--ddd-spacing-30) 0 0;  
+            width: 60%;
+            overflow-y: auto;      
         }
 
         :host([active])
@@ -78,9 +90,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
             border: var(--ddd-border-xs);
             border-color: var(--ddd-theme-default-skyBlue);
             width: var(--ddd-spacing-14);
-            position: absolute;
-            margin: var(--ddd-spacing-2) 0 0 0 ;
-            
+            margin: 0 0 var(--ddd-spacing-1) 0 ;
         }
     `];
     }
